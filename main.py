@@ -32,7 +32,7 @@ def poll_telegram():
                             ('title' in update['channel_post']['chat'] and
                              "bot" in update['channel_post']['chat']['title'].lower()):
                         print(f"Got new message: {update['channel_post']['text']}")
-                        response_json["result"].append(update['channel_post'])
+                        response_json["result"].append(update)
 
                         # Keep only the last 10 messages
                         response_json["result"] = response_json["result"][-15:]
