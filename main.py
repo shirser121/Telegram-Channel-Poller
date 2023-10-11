@@ -28,6 +28,7 @@ def poll_telegram():
                 for update in updates:
                     if 'channel_post' in update and \
                             'chat' in update['channel_post'] and \
+                            'text' in update['channel_post'] and \
                             ('title' in update['channel_post']['chat'] and
                              "bot" in update['channel_post']['chat']['title'].lower()):
                         print(f"Got new message: {update['channel_post']['text']}")
