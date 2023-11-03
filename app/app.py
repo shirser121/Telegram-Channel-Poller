@@ -6,7 +6,7 @@ import time
 app = Flask(__name__)
 
 # Read the token from the file
-TELEGRAM_TOKEN = open("telegram_token.txt", "r").read().strip()
+TELEGRAM_TOKEN = open("../telegram_token.txt", "r").read().strip()
 TELEGRAM_API_URL = f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/getUpdates"
 
 # In-memory storage for the messages
@@ -20,6 +20,7 @@ response_json = {
 def poll_telegram():
     global messages_store
     last_update_id = 0
+    print("Polling started")
     while True:
         try:
             response = requests.get(TELEGRAM_API_URL, params={"offset": last_update_id + 1, "timeout": 60})
